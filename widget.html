@@ -1,0 +1,253 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h2>This is a sample Widget built using Zoho Extension toolkit.</h2>
+  </body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-set Performance Difference</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+    <script>
+        // Data
+        var skills = ["Assess your own performance", "Communication", "Agree your responsibilities and see them through make decisions",
+                      "Cope with stress and tension", "Deal with people in power and authority", "Work out what you are good and not so good at settle disagreement",
+                      "Search for information and get advice", "Plan your time and energy", "Negotiate", "Solve problems"];
+        var percentages_2023 = [60, 60, 90, 90, 40, 80, 60, 60, 58, 100];
+        var percentages_2024 = [30, 100, 70, 40, 100, 20, 40, 50, 30, 90];
+
+        // Calculate the difference in percentages
+        var differences = percentages_2024.map((val, index) => val - percentages_2023[index]);
+
+        // Determine the levels for 2023 and 2024
+        var levels_2023 = differences.map(diff => diff > 0 ? 2 : (diff < 0 ? 1 : 0)); // Level 2 for improvement, Level 1 for decline, Level 0 for no change
+        var levels_2024 = differences.map(diff => diff < 0 ? 2 : (diff > 0 ? 1 : 0)); // Level 2 for decline, Level 1 for improvement, Level 0 for no change
+
+        // Configuration
+        var config = {
+            type: 'polarArea',
+            data: {
+                labels: skills,
+                datasets: [
+                    {
+                        label: '2023 Level',
+                        data: levels_2023,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)', // Red color for 2023
+                    },
+                    {
+                        label: '2024 Level',
+                        data: levels_2024,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color for 2024
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        suggestedMin: 0, // Start from level 0
+                        suggestedMax: 2 // End at level 2
+                    }
+                }
+            }
+        };
+
+        // Create the chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, config);
+    </script>
+</body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-set Performance Difference</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        .chart-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .legend-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .legend-item span {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="chart-container">
+            <canvas id="myChart" width="400" height="400"></canvas>
+            <div class="legend-container">
+                <div class="legend-item" style="color: rgba(255, 99, 132, 0.5);">
+                    <div style="width: 20px; height: 20px; background-color: rgba(255, 99, 132, 0.5);"></div>
+                    <span>2023</span>
+                </div>
+                <div class="legend-item" style="color: rgba(54, 162, 235, 0.5);">
+                    <div style="width: 20px; height: 20px; background-color: rgba(54, 162, 235, 0.5);"></div>
+                    <span>2024</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        var skills = ["Assess your own performance", "Communication", "Agree your responsibilities and see them through make decisions",
+                      "Cope with stress and tension", "Deal with people in power and authority", "Work out what you are good and not so good at settle disagreement",
+                      "Search for information and get advice", "Plan your time and energy", "Negotiate", "Solve problems"];
+        var percentages_2023 = [60, 60, 90, 90, 40, 80, 60, 60, 58, 100];
+        var percentages_2024 = [30, 100, 70, 40, 100, 20, 40, 50, 30, 90];
+
+        // Configuration
+        var config = {
+            type: 'radar',
+            data: {
+                labels: skills,
+                datasets: [
+                    {
+                        label: '2023',
+                        data: percentages_2023,
+                        borderColor: 'rgba(255, 99, 132, 0.5)', // Red color for 2023
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)', // Fill color
+                        pointRadius: 3,
+                        borderWidth: 1,
+                        fill: true
+                    },
+                    {
+                        label: '2024',
+                        data: percentages_2024,
+                        borderColor: 'rgba(54, 162, 235, 0.5)', // Blue color for 2024
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Fill color
+                        pointRadius: 3,
+                        borderWidth: 1,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max:50
+                    }
+                }
+            }
+        };
+
+        // Create the chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, config);
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill-set Radar Chart</title>
+    <style>
+        .width
+        {
+            width:600px;
+            height:600px;
+            margin: auto;
+            border:px solid black;
+           
+        }
+    </style>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="width">
+    <canvas id="myChart" width="100" height="100"></canvas>
+
+    <script>
+        // Data
+        var skills = ["Assess your own performance", "Communication", "Agree your responsibilities and see them through make decisions",
+                      "Cope with stress and tension", "Deal with people in power and authority", "Work out what you are good and not so good at settle disagreement",
+                      "Search for information and get advice", "Plan your time and energy", "Negotiate", "Solve problems"];
+        var percentages_2023 = [60, 80, 90, 90, 80, 80, 60, 60, 58, 60];
+        var percentages_2024 = [30, 100, 70, 40,60, 50, 100, 50, 30, 90];
+
+        // Configuration
+        var config = {
+            type: 'radar',
+            data: {
+                labels: skills,
+                datasets: [
+                    {
+                        label: 'My First Dataset',
+                        data: percentages_2023,
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)', // Red color for 2023
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(255, 99, 132, 1)'
+                    },
+                    {
+                        label: 'My Second Dataset',
+                        data: percentages_2024,
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color for 2024
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(54, 162, 235, 1)'
+                    }
+                ]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        stepSize: 20
+                    }
+                }
+            }
+        };
+
+        // Create the chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>
